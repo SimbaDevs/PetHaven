@@ -8,4 +8,5 @@ with app.app_context():
     # query the Pets in the database
     pets = db.session.query(Pet).all()
     for pet in pets:
-        print(pet.image_url)
+        db.session.delete(pet)
+    db.session.commit()
