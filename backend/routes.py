@@ -7,6 +7,13 @@ from flask_cors import CORS
 CORS(app)
 
 
+# get all pets
+@app.route('/api/v1/pets', methods=['GET'])
+def get_pets():
+    pets = Pet.query.all()
+    pet_schema = PetSchema(many=True)
+    result = pet_schema.dump(pets)
+    return jsonify(result)
 
 @app.route('/api/v1/cats', methods=['GET'])
 def get_cats():
