@@ -1,0 +1,63 @@
+/* src/App.css */
+:root {
+  --primary-color: #ff9a00;
+  --secondary-color: #c8c0c0;
+  --dark-color: #000000;
+  --white-color: #fff;
+  --font-style: "inter", sans-serif;
+}
+
+* {
+  font-family: var(--font-style);
+}
+
+.App-header {
+  margin: 0 auto;
+  width: 70%;
+  text-align: center;
+  padding: 2rem;
+}
+
+.highlight {
+  color: #ffa500;
+}
+.dark-highlight {
+  color: #333;
+  font-weight: 600;
+}
+.App-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.App-header p {
+  font-size: 1.25rem;
+  color: #777;
+  margin-bottom: 2rem;
+}
+
+.App-header select {
+  background-color: var(--white-color);
+  color: var(--dark-color);
+  padding: 0.5rem; /* Adjust padding as needed */
+  border: none;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.App-header input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 300px;
+  max-width: 100%;
+  margin-right: 0.5rem;
+}
+
+.App-header .search-btn {
+  padding: 0.5rem 1rem;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}

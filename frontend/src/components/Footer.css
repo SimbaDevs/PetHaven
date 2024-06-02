@@ -1,0 +1,16 @@
+/* src/components/Footer.css */
+.footer {
+    background-color: #ffa500;
+    padding: 2rem;
+    color: #fff;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.footer-content div {
+    flex: 1;
+}
