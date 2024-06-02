@@ -24,3 +24,4 @@ class ShelterSchema(ma.SQLAlchemyAutoSchema):
         load_instance = True
 
     pets = ma.Nested(PetSchema, many=True)
+
