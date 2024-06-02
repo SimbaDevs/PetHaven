@@ -1,16 +1,32 @@
 /* src/components/Footer.css */
+:root {
+  --primary-color: #ff9a00;
+  --lighter-primary-color: #ffbd59;
+  --secondary-color: #c8c0c0;
+  --dark-color: #000000;
+  --white-color: #fff;
+  --font-style: "inter", sans-serif;
+}
+
+* {
+  font-family: var(--font-style);
+  color: var(--dark-color);
+}
+
 .footer {
-    background-color: #ffa500;
-    padding: 2rem;
-    color: #fff;
+  background-color: var(--lighter-primary-color);
+  padding: 2rem;
+  color: #fff;
+  margin: 0;
+  width: 100%;
 }
 
 .footer-content {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
 }
 
 .footer-content div {
-    flex: 1;
+  flex: 1;
 }
