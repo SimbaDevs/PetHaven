@@ -46,5 +46,6 @@ def add_random_cats():
         db.session.commit()
         print(f"Added {name} to the database with breed {breed}.")
 
+
 if __name__ == "__main__":
     add_random_cats()
