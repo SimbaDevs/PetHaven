@@ -1,6 +1,9 @@
 from app import app, Pet
 from flask import jsonify
 from schema import PetSchema
+from flask_cors import CORS
+
+CORS(app)
 
 
 @app.route('/api/v1/cats', methods=['GET'])
