@@ -1,10 +1,8 @@
 from faker import Faker
 from random import randint, choice
 from datetime import date, timedelta
-from app import db, create_app
-from models import Pet, Shelter
+from app import db, Vaccine, Pet, Shelter, app
 
-app = create_app()
 app.app_context().push()
 
 faker = Faker()
@@ -38,16 +36,15 @@ def add_random_cats():
             breed=breed,
             weight=round(randint(3, 8) + faker.random.random(), 1),  # Weight between 3 and 8 kg
             age=randint(1, 15),  # Age between 1 and 15 years
-            location="Nairobi, Kenya",
+            location=faker.city(),
             arrival_date=date.today() - timedelta(days=randint(0, 365)),  # Random arrival date within the last year
             adoption_fee=round(randint(20, 100) + faker.random.random(), 2),  # Adoption fee between $20 and $100
             shelter_id=1,  # Assuming all pets are in shelter with id=1
-            image_url=f"http://localhost:5000/static/images/{cat_image}"
+            image_url=f"http://localhost:5000/static/images/cats/{cat_image}"
         )
         db.session.add(pet)
         db.session.commit()
         print(f"Added {name} to the database with breed {breed}.")
-
 
 if __name__ == "__main__":
     add_random_cats()

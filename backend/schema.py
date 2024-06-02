@@ -1,6 +1,7 @@
 from flask_marshmallow import Marshmallow
-from app import ma
 from models import Pet, Shelter, Vaccine
+
+ma = Marshmallow()
 
 class VaccineSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
