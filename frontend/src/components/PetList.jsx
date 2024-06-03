@@ -4,7 +4,7 @@ import PetCard from "./PetCard";
 import axios from "axios";
 import "./PetList.css";
 
-const PetList = () => {
+const PetList = ({ selectedOption }) => {
   const [pets, setPets] = React.useState([]);
 
   useEffect(() => {
@@ -19,9 +19,14 @@ const PetList = () => {
       });
   }, []);
 
+  const filteredPets =
+    selectedOption === "all"
+      ? pets
+      : pets.filter((pet) => pet.pet_type === selectedOption);
+
   return (
     <div className="pet-list">
-      {pets.map((pet) => (
+      {filteredPets.map((pet) => (
         <PetCard key={pet.id} pet={pet} />
       ))}
     </div>
