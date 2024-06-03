@@ -20,7 +20,8 @@ const PetList = ({ selectedOption, searchQuery }) => {
   }, []);
 
   const filteredPets = pets.filter((pet) => {
-    const matchesType = selectedOption === "all" || pet.type === selectedOption;
+    const matchesType =
+      selectedOption === "all" || pet.pet_type === selectedOption;
     const matchesSearch = !searchQuery || pet.breed.includes(searchQuery);
 
     return matchesType && matchesSearch;
