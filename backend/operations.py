@@ -5,8 +5,8 @@ with app.app_context():
     db.create_all()
     print("Database tables created.")
     
-    # query the Pets in the database
-    pets = db.session.query(Pet).all()
+    # query the Pets
+    pets = Pet.query.all()
     for pet in pets:
-        db.session.delete(pet)
+        print(pet.name, pet.breed, pet.pet_type, pet.image_url)
     db.session.commit()
