@@ -27,7 +27,7 @@ function App() {
                 <input type="text" placeholder="Search dogs..." />
                 <button className="search-btn">Search</button>
             </header>
-            <PetList />
+            <PetList selectedOption={selectedOption} />
             <Footer />
         </div>
     );
