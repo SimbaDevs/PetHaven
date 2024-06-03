@@ -8,9 +8,14 @@ import Footer from './components/Footer';
 
 function App() {
     const [selectedOption, setSelectedOption] = useState('all');
+    const [searchQuery, setSearchQuery] = useState('')
 
     const handleOptionChange = (event) => {
         setSelectedOption(event.target.value);
+    };
+
+    const handleSearchChange = (event) => {
+        setSearchQuery(event.target.value);
     };
 
     return (
@@ -24,10 +29,10 @@ function App() {
                     <option value="cat">Cats</option>
                     <option value="dog">Dogs</option>
                 </select>
-                <input type="text" placeholder="Search dogs..." />
+                <input type="text" placeholder="Search pet by bread..." value={searchQuery} onChange={handleSearchChange} />
                 <button className="search-btn">Search</button>
             </header>
-            <PetList selectedOption={selectedOption} />
+            <PetList selectedOption={selectedOption} searchQuery={searchQuery} />
             <Footer />
         </div>
     );

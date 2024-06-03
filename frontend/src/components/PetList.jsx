@@ -4,7 +4,7 @@ import PetCard from "./PetCard";
 import axios from "axios";
 import "./PetList.css";
 
-const PetList = ({ selectedOption }) => {
+const PetList = ({ selectedOption, searchQuery }) => {
   const [pets, setPets] = React.useState([]);
 
   useEffect(() => {
@@ -19,10 +19,12 @@ const PetList = ({ selectedOption }) => {
       });
   }, []);
 
-  const filteredPets =
-    selectedOption === "all"
-      ? pets
-      : pets.filter((pet) => pet.pet_type === selectedOption);
+  const filteredPets = pets.filter((pet) => {
+    const matchesType = selectedOption === "all" || pet.type === selectedOption;
+    const matchesSearch = !searchQuery || pet.breed.includes(searchQuery);
+
+    return matchesType && matchesSearch;
+  });
 
   return (
     <div className="pet-list">
