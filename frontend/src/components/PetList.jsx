@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import PetCard from "./PetCard";
 import axios from "axios";
-import "./PetList.css";
+import "./styles/PetList.css";
 
 const PetList = ({ selectedOption, searchQuery }) => {
   const [pets, setPets] = React.useState([]);

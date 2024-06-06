@@ -1,7 +1,7 @@
 // src/App.js
-import React, { useState } from 'react';
-
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import PetList from './components/PetList';
 import Footer from './components/Footer';
