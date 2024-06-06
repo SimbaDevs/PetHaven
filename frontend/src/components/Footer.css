@@ -19,7 +19,6 @@
   padding: 2rem;
   color: #fff;
   margin: 0;
-  /* width: 100%; */
 }
 
 p {
@@ -54,6 +53,6 @@ p {
 }
 
 .footer .location p {
-    white-space: pre-wrap;
-    text-transform: capitalize;
+  white-space: pre-wrap;
+  text-transform: capitalize;
 }

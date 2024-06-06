@@ -16,7 +16,12 @@ const Footer = () => {
         </div>
         <div className="about">
           <h3>About us</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p>
+            Welcome to Pet Haven, your trusted partner in finding the perfect
+            companion. Our mission is to connect loving families with pets in
+            need of a home. Join us in creating happy homes for our furry
+            friends!
+          </p>
         </div>
         <div className="contact">
           <h3>Contact us</h3>
