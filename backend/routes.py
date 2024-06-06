@@ -16,7 +16,7 @@ def get_pets():
     return jsonify(result)
 
 # get pet by id
-@app.route('/api/v1/pets/<id>', methods=['GET'])
+@app.route('/api/v1/pets/<int:id>', methods=['GET'])
 def get_pet(id):
     pet = Pet.query.get(id)
     pet_schema = PetSchema()
