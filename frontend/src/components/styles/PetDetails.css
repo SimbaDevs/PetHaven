@@ -1,0 +1,32 @@
+.pet-details {
+    padding: 20px;
+  }
+  
+  .pet-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .pet-info img {
+    width: 300px;
+    height: auto;
+  }
+  
+  .details {
+    background-color: #FFA500;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .details button {
+    background-color: #00FF00;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .description, .medical-history {
+    margin-top: 20px;
+  }
+  

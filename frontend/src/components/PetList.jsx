@@ -1,5 +1,6 @@
 // src/components/PetList.js
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import PetCard from "./PetCard";
 import axios from "axios";
 import "./styles/PetList.css";
@@ -30,7 +31,9 @@ const PetList = ({ selectedOption, searchQuery }) => {
   return (
     <div className="pet-list">
       {filteredPets.map((pet) => (
-        <PetCard key={pet.id} pet={pet} />
+        <Link to={`/pet/${pet.id}`} key={pet.id}>
+          <PetCard key={pet.id} pet={pet} />
+        </Link>
       ))}
     </div>
   );
