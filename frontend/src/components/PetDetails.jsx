@@ -66,7 +66,7 @@ const PetDetails = () => {
               <p className="var">{pet.age} years old</p>
               <p className="var">Not defined</p>
               <p className="var">{pet.arrival_date}</p>
-              <p className="var">{pet.size} kgs</p>
+              <p className="var">{pet.weight} kgs</p>
               <p className="var">{pet.location}</p>
               <p className="var">Kshs {pet.adoption_fee}</p>
             </div>

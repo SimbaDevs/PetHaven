@@ -24,6 +24,10 @@
   margin-bottom: 10px;
 }
 
+.back-btn:hover {
+  color: var(--primary-color);
+}
+
 .pet-specifics {
   display: flex;
   align-items: start;
@@ -39,8 +43,8 @@
 
 .pet-specifics .pet-img img {
   width: 100%;
+  aspect-ratio: 21/15;
   max-height: var(--max-img-height);
-  /* height: auto; */
   border-radius: 12px;
 }
 

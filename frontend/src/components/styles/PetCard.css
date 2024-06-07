@@ -19,6 +19,7 @@
 }
 
 .pet-details h2 {
+  text-decoration: none;
   font-size: 1.25rem;
   margin: 0.5rem 0;
 }
