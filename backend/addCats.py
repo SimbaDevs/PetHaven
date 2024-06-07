@@ -31,7 +31,7 @@ def add_random_cats():
         name = cat_image.split('.')[0]  # Extract name from image file name
         breed = choice(cat_breeds)  # Randomly select a breed
         pet = Pet(
-            pet_type="cat",
+            pet_type="Cats",
             name=name,
             breed=breed,
             weight=round(randint(3, 8) + faker.random.random(), 1),  # Weight between 3 and 8 kg
@@ -40,7 +40,7 @@ def add_random_cats():
             arrival_date=date.today() - timedelta(days=randint(0, 365)),  # Random arrival date within the last year
             adoption_fee=round(randint(20, 100) + faker.random.random(), 2),  # Adoption fee between $20 and $100
             shelter_id=1,  # Assuming all pets are in shelter with id=1
-            image_url=f"http://localhost:5000/static/images/cats/{cat_image}"
+            image_url=f"http://localhost:5000/static/images/{cat_image}"
         )
         db.session.add(pet)
         db.session.commit()
