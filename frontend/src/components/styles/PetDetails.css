@@ -1,32 +1,136 @@
+:root {
+  --primary-color: #ff9a00;
+  --secondary-color: #c8c0c0;
+  --dark-color: #000000;
+  --white-color: #fff;
+  --max-img-height: 80vh;
+  --font-style: "inter", sans-serif;
+}
+
+* {
+  font-family: var(--font-style);
+}
+
 .pet-details {
-    padding: 20px;
-  }
-  
-  .pet-info {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  .pet-info img {
-    width: 300px;
-    height: auto;
-  }
-  
-  .details {
-    background-color: #FFA500;
-    padding: 20px;
-    border-radius: 10px;
-  }
-  
-  .details button {
-    background-color: #00FF00;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
-  
-  .description, .medical-history {
-    margin-top: 20px;
-  }
-  
+  padding: 20px;
+}
+
+.back-btn {
+  background-color: transparent;
+  border: none;
+  font-size: larger;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.pet-specifics {
+  display: flex;
+  align-items: start;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.pet-specifics .pet-img {
+  width: 60%;
+  max-height: var(--max-img-height);
+  /* height: auto; */
+}
+
+.pet-specifics .pet-img img {
+  width: 100%;
+  max-height: var(--max-img-height);
+  /* height: auto; */
+  border-radius: 12px;
+}
+
+.pet-specifics .details {
+  background-color: #ffa500;
+  width: 35%;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.name-and-availability {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.name-and-availability .pet-name {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #101010;
+}
+
+.name-and-availability .availability {
+  background-color: #8cd081;
+  padding: 9px;
+  color: #1a800a;
+  border-radius: 5px;
+}
+
+.about-text {
+  font-size: 1.4rem;
+  letter-spacing: 10px;
+  font-weight: 100;
+  color: #000;
+  margin-top: -5px;
+}
+
+.particulars-and-variables {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-top: -20px;
+}
+
+.variables .var {
+  margin-right: 50px;
+  color: rgb(53, 51, 51);
+  font-weight: 100;
+}
+
+.pet-specifics .details button {
+  background-color: #21c606;
+  width: 100%;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+}
+
+.pet-details .description {
+  margin: 0;
+  padding: 10px;
+}
+
+.pet-details .description h2 {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--primary-color);
+}
+
+.pet-details .description p {
+  font-size: 1.4rem;
+  font-weight: 100;
+  color: #000;
+}
+
+.pet-details .medical-history {
+  margin: 0;
+  padding: 10px;
+}
+
+.pet-details .medical-history h2 {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--primary-color);
+}
+
+.pet-details .medical-history p {
+  font-size: 1.4rem;
+  font-weight: 100;
+  color: #000;
+}
