@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./styles/PetDetails.css";
 
 const PetDetails = () => {
   const { id } = useParams();
   const [pet, setPet] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/v1/pets/${id}`)
@@ -72,7 +74,9 @@ const PetDetails = () => {
             </div>
           </div>
 
-          <button>Apply to Adopt</button>
+          <button onClick={() => navigate(`/adopt/${pet.id}`)}>
+            Apply to Adopt
+          </button>
         </div>
       </div>
       <div className="description">

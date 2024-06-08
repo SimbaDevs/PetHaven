@@ -26,21 +26,20 @@ const AdoptionForm = () => {
 
   return (
     <div className="adoption-form-page">
-      <button className="back-btn" onClick={() => window.history.back()}>
-        Back to all pets
-      </button>
       <div className="adoption-form-container">
         <div className="form-section">
           <h2>Adopt {pet.name}</h2>
           <p>Fill out this form to start the adoption process</p>
           <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="firstName">First Name</label>
-              <input type="text" id="firstName" name="firstName" required />
-            </div>
-            <div className="form-group">
-              <label htmlFor="lastName">Last Name</label>
-              <input type="text" id="lastName" name="lastName" required />
+            <div className="name-groups">
+              <div className="form-group">
+                <label htmlFor="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" required />
+              </div>
             </div>
             <div className="form-group">
               <label htmlFor="email">Email Address</label>
@@ -53,10 +52,6 @@ const AdoptionForm = () => {
             <div className="form-group">
               <label htmlFor="address">Address</label>
               <input type="text" id="address" name="address" />
-            </div>
-            <div className="form-group">
-              <label htmlFor="message">Your Message</label>
-              <textarea id="message" name="message" rows="4"></textarea>
             </div>
             <button type="submit" className="submit-btn">
               Submit
