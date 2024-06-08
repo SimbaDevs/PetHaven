@@ -1,0 +1,78 @@
+/* src/components/AdoptionForm.css */
+:root {
+  --primary-color: #ff9a00;
+  --secondary-color: #c8c0c0;
+  --dark-color: #000000;
+  --white-color: #fff;
+  --max-img-height: 80vh;
+  --font-style: "inter", sans-serif;
+}
+
+* {
+  font-family: var(--font-style);
+}
+
+.adoption-form-page {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.back-link {
+  text-decoration: none;
+  color: #333;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.adoption-form-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.form-section {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.image-section {
+  flex: 1;
+}
+
+.image-section img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.submit-btn {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #555;
+}
