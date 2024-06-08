@@ -6,7 +6,7 @@ import PetDetails from './components/PetDetails';
 import Navbar from './components/Navbar';
 import PetList from './components/PetList';
 import Footer from './components/Footer';
-import AdoptForm from './components/AdoptForm';
+import AdoptionForm from './components/AdoptForm';
 
 function App() {
     const [selectedOption, setSelectedOption] = useState('all');
@@ -42,7 +42,7 @@ function App() {
                         </div>
                     } />
                     <Route path="/pet/:id" element={<PetDetails />} />
-                    <Route path="/adopt" element={ AdoptForm } />
+                    <Route path="/adopt/:id" element={<AdoptionForm />} />
                 </Routes>
                 <Footer />
             </Router>
