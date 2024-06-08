@@ -1,55 +1,74 @@
+// src/components/AdoptionForm.js
 import React from "react";
+import { useParams, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import "./styles/AdoptionForm.css";
 
-function AdoptForm() {
+const AdoptionForm = () => {
+  const { id } = useParams();
+  const [pet, setPet] = useState(null);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/v1/pets/${id}`)
+      .then((response) => response.json())
+      .then((data) => setPet(data))
+      .catch((error) => console.error("Error fetching pet details:", error));
+  }, [id]);
+
+  if (!pet) {
+    return <div>Loading...</div>;
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Add form submission logic here
+  };
+
   return (
-    <div className="form-img-container">
-      <div className="form-container">
-        <form action="">
-          <h2>Adopt Jane</h2>
-          <p className="form-about-text">
-            Fill out this form to adopt Jane. We will contact you as soon as
-            possible.
-          </p>
-          <div className="names">
-            <div className="input-container">
-              <label htmlFor="name">First Name</label>
-              <input type="text" id="name" name="name" />
+    <div className="adoption-form-page">
+      <button className="back-btn" onClick={() => window.history.back()}>
+        Back to all pets
+      </button>
+      <div className="adoption-form-container">
+        <div className="form-section">
+          <h2>Adopt {pet.name}</h2>
+          <p>Fill out this form to start the adoption process</p>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" required />
             </div>
-            <div className="input-container">
-              <label htmlFor="last-name">Last Name</label>
-              <input type="text" id="last-name" name="last-name" />
+            <div className="form-group">
+              <label htmlFor="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" required />
             </div>
-          </div>
-          <div className="input-container">
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" name="email" />
-          </div>
-          <div className="input-container">
-            <label htmlFor="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" />
-          </div>
-          <div className="input-container">
-            <label htmlFor="address">Address</label>
-            <input type="text" id="address" name="address" />
-          </div>
-          <div className="input-container">
-            <label htmlFor="city">City</label>
-            <input type="text" id="city" name="city" />
-          </div>
-          <div className="input-container">
-            <label htmlFor="state">State</label>
-            <input type="text" id="state" name="state" />
-          </div>
-          <div className="form-btn">
-            <button type="submit">Submit</button>
-          </div>
-        </form>
-      </div>
-      <div className="image-container">
-        <img src="" alt="dog" />
+            <div className="form-group">
+              <label htmlFor="email">Email Address</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div className="form-group">
+              <label htmlFor="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="address">Address</label>
+              <input type="text" id="address" name="address" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="message">Your Message</label>
+              <textarea id="message" name="message" rows="4"></textarea>
+            </div>
+            <button type="submit" className="submit-btn">
+              Submit
+            </button>
+          </form>
+        </div>
+        <div className="image-section">
+          <img src={pet.image_url} alt={pet.name} />
+        </div>
       </div>
     </div>
   );
-}
+};
 
-export default AdoptForm;
+export default AdoptionForm;
