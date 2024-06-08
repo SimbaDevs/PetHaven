@@ -9,7 +9,7 @@ const PetDetails = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/pets/${id}`)
+    fetch(`/api/v1/pets/${id}`)
       .then((response) => response.json())
       .then((data) => setPet(data))
       .catch((error) => console.error("Error fetching pet details:", error));
