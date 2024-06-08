@@ -1,4 +1,4 @@
 Flask==2.0.1
 Flask-SQLAlchemy==2.5.1
 Flask-Marshmallow==0.14.0
-werkzeug==2.0.3
+werkzeug==3.0.3
