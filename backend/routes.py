@@ -3,7 +3,7 @@ from flask import jsonify
 from schema import PetSchema
 from flask_cors import CORS
 
-# Enable CORS only for images
+# Enable CORS
 CORS(app)
 
 
