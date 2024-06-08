@@ -105,6 +105,11 @@
   border: none;
 }
 
+.pet-specifics .details button:hover {
+  background-color: #000000;
+  cursor: pointer;
+}
+
 .pet-details .description {
   margin: 0;
   padding: 10px;

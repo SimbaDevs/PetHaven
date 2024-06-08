@@ -74,7 +74,10 @@ const PetDetails = () => {
             </div>
           </div>
 
-          <button onClick={() => navigate(`/adopt/${pet.id}`)}>
+          <button
+            className="adopt-btn"
+            onClick={() => navigate(`/adopt/${pet.id}`)}
+          >
             Apply to Adopt
           </button>
         </div>
