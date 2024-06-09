@@ -16,7 +16,7 @@ PetHaven is a web application that connects pet lovers with adoptable pets in th
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/your-username/PetHaven.git`
+1. Clone the repository: `git clone https://github.com/SimbaDevs/PetHaven.git`
 2. Navigate to the project directory: `cd PetHaven`
 3. Install dependencies: `npm install`
 
