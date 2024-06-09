@@ -4,6 +4,7 @@
   --secondary-color: #c8c0c0;
   --dark-color: #000000;
   --white-color: #fff;
+  --highlight-color: #828282;
   --max-img-height: 80vh;
   --font-style: "inter", sans-serif;
 }
@@ -92,6 +93,11 @@
   box-sizing: border-box;
   border: 1px solid var(--secondary-color);
   border-radius: 5px;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--highlight-color);
 }
 
 .submit-btn {
