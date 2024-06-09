@@ -86,8 +86,7 @@
   font-weight: bold;
 }
 
-.form-group input,
-.form-group textarea {
+.form-group input {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;

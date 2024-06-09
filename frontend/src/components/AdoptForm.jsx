@@ -1,6 +1,6 @@
 // src/components/AdoptionForm.js
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./styles/AdoptionForm.css";
 
@@ -17,8 +17,9 @@ const AdoptionForm = () => {
 
   if (!pet) {
     return <div>Loading...</div>;
+  } else {
+    document.title = `Adopt ${pet.name}`;
   }
-
   const handleSubmit = (event) => {
     event.preventDefault();
     // Add form submission logic here

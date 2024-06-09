@@ -17,6 +17,8 @@ const PetDetails = () => {
 
   if (!pet) {
     return <div>Loading...</div>;
+  } else {
+    document.title = `${pet.name} - Pet Details`;
   }
 
   return (
