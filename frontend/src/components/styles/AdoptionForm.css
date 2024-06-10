@@ -109,8 +109,10 @@
   border-radius: 10px;
   border: none;
   transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .submit-btn:hover {
   background-color: #555;
+  border: none;
 }
