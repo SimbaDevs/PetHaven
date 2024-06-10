@@ -72,7 +72,7 @@ def adopt():
     db.session.add(new_adoption)
     db.session.commit()
     
-    send_confirmation_email(data['email'], pet)
+    # send_confirmation_email(data['email'], pet)
     
     return jsonify({'message': 'Adoption form submitted successfully!'}), 201
 
