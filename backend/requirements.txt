@@ -1,4 +1,8 @@
-Flask==2.0.1
-Flask-SQLAlchemy==2.5.1
-Flask-Marshmallow==0.14.0
+Flask==3.0.3
+Flask-Cors==4.0.1
+Flask-Mail=0.10.0
+Flask-SQLAlchemy==3.1.1
+Flask-Marshmallow==3.21.2
+marshmallow-sqlalchemy=1.0.0
 werkzeug==3.0.3
+Fasker==25.3.0
