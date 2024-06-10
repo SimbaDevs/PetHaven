@@ -7,6 +7,19 @@ import "./styles/AdoptionForm.css";
 const AdoptionForm = () => {
   const { id } = useParams();
   const [pet, setPet] = useState(null);
+  const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone_number: "",
+    address: "",
+    pet_id: id,
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   useEffect(() => {
     fetch(`/api/v1/pets/${id}`)
@@ -22,7 +35,26 @@ const AdoptionForm = () => {
   }
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Add form submission logic here
+    // create a POST request to submit data to backend via API
+    fetch("/api/v1/adopt", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === "Adoption form submitted successfully!") {
+          alert("Adoption form submitted successfully!");
+          console.log(formData);
+          console.log(data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error submitting adoption form:", error);
+        alert("Error submitting adoption form. Please try again.");
+      });
   };
 
   return (
@@ -38,25 +70,53 @@ const AdoptionForm = () => {
             <form onSubmit={handleSubmit}>
               <div className="name-groups">
                 <div className="form-group">
-                  <label htmlFor="firstName">First Name</label>
-                  <input type="text" id="firstName" name="firstName" required />
+                  <label htmlFor="first_name">First Name</label>
+                  <input
+                    type="text"
+                    id="first_name"
+                    name="first_name"
+                    required
+                    onChange={handleChange}
+                  />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="lastName">Last Name</label>
-                  <input type="text" id="lastName" name="lastName" required />
+                  <label htmlFor="last_name">Last Name</label>
+                  <input
+                    type="text"
+                    id="last_name"
+                    name="last_name"
+                    required
+                    onChange={handleChange}
+                  />
                 </div>
               </div>
               <div className="form-group">
                 <label htmlFor="email">Email Address</label>
-                <input type="email" id="email" name="email" required />
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  onChange={handleChange}
+                />
               </div>
               <div className="form-group">
-                <label htmlFor="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" />
+                <label htmlFor="phone_number">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone_number"
+                  name="phone_number"
+                  onChange={handleChange}
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="address">Address</label>
-                <input type="text" id="address" name="address" />
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  onChange={handleChange}
+                />
               </div>
               <button type="submit" className="submit-btn">
                 Submit

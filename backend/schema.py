@@ -1,6 +1,6 @@
 from flask_marshmallow import Marshmallow
 from flask import jsonify
-from app import Pet, Shelter, Vaccine, app
+from app import Pet, Shelter, Vaccine, AdoptionFormSubmission
 
 ma = Marshmallow()
 
@@ -26,3 +26,7 @@ class ShelterSchema(ma.SQLAlchemyAutoSchema):
         load_instance = True
 
     pets = ma.Nested(PetSchema, many=True)
+
+class AdoptionFormSubmissionSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = AdoptionFormSubmission
