@@ -1,4 +1,4 @@
-from faker import Faker
+from faker import Faker # type: ignore
 from random import randint, choice
 from datetime import date, timedelta
 from app import db, Vaccine, Pet, Shelter, app
