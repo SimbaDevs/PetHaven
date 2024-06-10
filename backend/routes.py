@@ -29,6 +29,7 @@ def send_confirmation_email(recipient, pet):
     Best regards,
     Pet Haven
     """
+    mail.send(msg)
 
     # # Attach the pet's image if available
     # if pet.image_url:
