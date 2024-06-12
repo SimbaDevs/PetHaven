@@ -32,8 +32,8 @@ function App() {
                                 <p>Browse our available animals and learn more about the adoption process. Together, we can <span className="dark-highlight">rescue, rehabilitate, and rehome</span> pets in need.</p>
                                 <select value={selectedOption} onChange={handleOptionChange}>
                                     <option value="all">All</option>
-                                    <option value="cat">Cats</option>
-                                    <option value="dog">Dogs</option>
+                                    <option value="Cats">Cats</option>
+                                    <option value="Dogs">Dogs</option>
                                 </select>
                                 <input type="text" placeholder="Search pet by breed..." value={searchQuery} onChange={handleSearchChange} />
                                 <button className="search-btn">Search</button>
