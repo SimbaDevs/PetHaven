@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import PetCard from "./PetCard";
 import axios from "axios";
 import "./styles/PetList.css";
+import Navbar from "./Navbar";
 
 const PetList = ({ selectedOption, searchQuery }) => {
   const [pets, setPets] = React.useState([]);

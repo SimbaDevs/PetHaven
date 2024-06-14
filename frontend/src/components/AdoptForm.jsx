@@ -1,8 +1,10 @@
-// src/components/AdoptionForm.js
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./styles/AdoptionForm.css";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+
 
 const AdoptionForm = () => {
   const { id } = useParams();
@@ -59,6 +61,7 @@ const AdoptionForm = () => {
 
   return (
     <>
+      <Navbar />
       <button className="back-btn" onClick={() => window.history.back()}>
         Back to Pet Details
       </button>
@@ -128,6 +131,7 @@ const AdoptionForm = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
