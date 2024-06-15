@@ -24,10 +24,9 @@ function App() {
         <div className="App">
             <Router>
                 <Routes>
-                    <Route path="/signin" element={<SignIn />} />
+                    <Navbar />
                     <Route path="/" element={
                         <div>
-                            <Navbar />
                             <header className="App-header">
                                 <h1>Every Pet Deserves a Loving Home.<br /> <span className="highlight">Adopt</span> a Pet Today</h1>
                                 <p>Browse our available animals and learn more about the adoption process. Together, we can <span className="dark-highlight">rescue, rehabilitate, and rehome</span> pets in need.</p>
@@ -40,11 +39,12 @@ function App() {
                                 <button className="search-btn">Search</button>
                             </header>
                             <PetList selectedOption={selectedOption} searchQuery={searchQuery} />
-                            <Footer />
                         </div>
                     } />
+                    <Route path="/signin" element={<SignIn />} />
                     <Route path="/pet/:id" element={<PetDetails />} />
                     <Route path="/adopt/:id" element={<AdoptionForm />} />
+                    <Footer />
                 </Routes>
             </Router>
         </div>
