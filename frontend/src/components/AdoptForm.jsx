@@ -61,7 +61,6 @@ const AdoptionForm = () => {
 
   return (
     <>
-      <Navbar />
       <button className="back-btn" onClick={() => window.history.back()}>
         Back to Pet Details
       </button>
@@ -131,7 +130,6 @@ const AdoptionForm = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
