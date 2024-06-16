@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
 import "./styles/PetDetails.css";
 
 const PetDetails = () => {
@@ -24,8 +22,6 @@ const PetDetails = () => {
   }
 
   return (
-    <>
-      <Navbar />
       <div className="pet-details">
         <button className="back-btn" onClick={() => window.history.back()}>
           Back to all pets
@@ -110,8 +106,6 @@ const PetDetails = () => {
           <p>Dummy Vaccination 3 - March 1, 2022</p>
         </div>
       </div>
-      <Footer />
-    </>
   );
 };
 
