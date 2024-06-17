@@ -13,7 +13,7 @@ function SignIn() {
       <div className="form-container">
         <div className="headers">
           <p className="main">Sign In</p>
-          <p className="sub">Sign Up</p>
+          {/* <p className="sub">Sign Up</p> */}
         </div>
         <form action="">
           <div className="form-input">
@@ -30,7 +30,7 @@ function SignIn() {
           <a href={navigate()} className="forgot-pwd">
             Forgot password?
           </a>
-          <button type="submit">Sign in</button>
+          <button type="submit">Continue</button>
           <div className="divider-container">
             <div className="divider-line"></div>
             <span className="divider-text">or continue with</span>
