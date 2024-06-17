@@ -22,9 +22,9 @@ function App() {
 
     return (
         <div className="App">
+            <Navbar />
             <Router>
                 <Routes>
-                    <Navbar />
                     <Route path="/" element={
                         <div>
                             <header className="App-header">
@@ -44,8 +44,8 @@ function App() {
                     <Route path="/signin" element={<SignIn />} />
                     <Route path="/pet/:id" element={<PetDetails />} />
                     <Route path="/adopt/:id" element={<AdoptionForm />} />
-                    <Footer />
                 </Routes>
+                <Footer />
             </Router>
         </div>
     );
