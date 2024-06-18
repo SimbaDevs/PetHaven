@@ -2,9 +2,9 @@
 import React from "react";
 import "./styles/Footer.css";
 
-const Footer = () => {
+const Footer = React.forwardRef((props, ref) => {
   return (
-    <footer className="footer">
+    <footer ref={ref} className="footer">
       <div className="footer-content">
         <div className="socials">
           <h3>Pet Haven</h3>
@@ -39,6 +39,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+});
 
 export default Footer;

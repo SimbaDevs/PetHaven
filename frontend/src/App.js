@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PetDetails from './components/PetDetails';
 import Navbar from './components/Navbar';
 import PetList from './components/PetList';
@@ -49,16 +49,23 @@ function PageLayout() {
     let location = useLocation()
     let showNavAndFooter = location.pathname !== '/signin';
 
+    const footerRef = useRef(null);
+
+    const scrollToFooter = () => {
+        footerRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+
+
     return (
         <div className='App'>
-            {showNavAndFooter && <Navbar />}
+            {showNavAndFooter && <Navbar scrollToFooter={scrollToFooter} />}
             <Routes>
                 <Route path='/' element={<HomePage />} />
                 <Route path='/signin' element={<SignIn />} />
                 <Route path="/pet/:id" element={<PetDetails />} />
                 <Route path="/adopt/:id" element={<AdoptionForm />} />
             </Routes>
-            {showNavAndFooter && <Footer />}
+            {showNavAndFooter && <Footer ref={footerRef} />}
         </div>
     )
 }
