@@ -36,9 +36,7 @@ html {
 }
 
 .auth-container .form-image {
-  & img {
-    height: 100%;
-  }
+  background-image: url();
 }
 
 .auth-container .form-container {

@@ -1,0 +1,17 @@
+Data type transition from database to frontend application
+
+database - rows with the following datatypes(SQL)
+    - INTEGER
+    - VARCHAR
+    - BOOLEAN
+    - DATETIME
+    - DECIMAL
+
+serialization (backend):
+    - int
+    - string(n)
+    - bool
+    - datetime
+    - float
+
+Json produced
