@@ -1,40 +1,39 @@
 /* src/components/Navbar.css */
 :root {
-	--primary-color: #FF9A00;
-	--secondary-color: #C8C0C0;
-	--dark-color: #000000;
-	--white-color: #fff;
+  --primary-color: #ff9a00;
+  --secondary-color: #c8c0c0;
+  --dark-color: #000000;
+  --white-color: #fff;
 
-	--font-style: 'inter', sans-serif;
-
+  --font-style: "inter", sans-serif;
 }
 
 * {
-	font-family: var(--font-style);
+  font-family: var(--font-style);
 }
 .navbar {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0 1rem;
-	background-color: var(--white-color);
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  background-color: var(--white-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .logo img {
-	width: 40px;
-	height: 40px;
-	margin-right: 0.5rem;
+  width: 40px;
+  height: 40px;
+  margin-right: 0.5rem;
 }
 
 .logo h1 {
-	font-size: 1.5rem;	
-  	color: #101010;
+  font-size: 1.5rem;
+  color: #101010;
 }
 
 .nav-links {
@@ -48,6 +47,10 @@
   text-decoration: none;
   color: #333;
   font-weight: 500;
+}
+
+.nav-links a:hover {
+  cursor: pointer;
 }
 
 .signin-btn {
