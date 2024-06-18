@@ -4,8 +4,10 @@
   --ash-white: #e6dfdf;
   --dark-color: #000000;
   --white-color: #fff;
+  --blue-support-color: #1264ed;
   --max-img-height: 80vh;
   --font-style: "inter", sans-serif;
+  --placeholder-color: #494949;
 }
 
 * {
@@ -14,7 +16,7 @@
 
 body,
 html {
-  /* height: 100vh; */ /*TODO: don't uncomment this learn */
+  /* height: 100vh; */ /*TODO: don't uncomment this line */
   margin: 0;
   display: flex;
   justify-content: center;
@@ -46,80 +48,95 @@ html {
   flex-direction: column;
   margin: 10px;
 
-  & .headers {
-    display: flex;
-    justify-content: start;
-    align-items: baseline;
-    gap: 30px;
+  & form {
+    width: 80%;
 
-    & .main {
+    & h1 {
       color: var(--primary-color);
-      font-size: 30px;
-      font-weight: 600;
+      align-self: self-start;
     }
-  }
+    & .form-input {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
 
-  & .form-input {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+      & input {
+        border: none;
+        border-bottom: 1px solid var(--dark-color);
+        padding: 12px;
+        margin: 0;
+        background-color: transparent;
+      }
 
-    & input {
-      width: 20vw;
+      & input::placeholder {
+        color: var(--placeholder-color);
+        font-size: 16px;
+      }
+    }
+
+    & .form-input input[type="password"] {
+      margin-bottom: 20px;
+    }
+
+    & .forgot-pwd {
+      color: var(--blue-support-color);
+    }
+
+    & .forgot-pwd:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    & button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
       border: none;
-      border-bottom: 2px solid var(--dark-color);
-      padding: 12px;
-      background-color: transparent;
+      font-size: 16px;
+      font-weight: 500;
+      background-color: var(--dark-color);
+      color: var(--white-color);
+      border-radius: 5px;
     }
 
-    & input::placeholder {
+    & .divider-container {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    & .divider-line {
+      flex-grow: 1;
+      height: 1px;
+      background-color: #888888;
+      margin: 0 10px;
+    }
+
+    & .divider-text {
+      white-space: nowrap;
+      color: #888888;
+      font-size: 14px;
+    }
+
+    & .google-login {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 15%;
+      padding: 10px;
+      background: var(--white-color);
+      border-radius: 5px;
+    }
+
+    & button:hover {
+      background-color: var(--primary-color);
       color: var(--dark-color);
-      font-size: medium;
     }
-  }
-
-  & .form-input input[type="password"] {
-    margin-bottom: 20px;
-  }
-
-  & button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: none;
-    font-weight: 700;
-    background-color: var(--dark-color);
-    color: var(--white-color);
-    border-radius: 5px;
-  }
-
-  & .divider-container {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin: 20px 0;
-  }
-
-  & .divider-line {
-    flex-grow: 1;
-    height: 1px;
-    background-color: #888888;
-    margin: 0 10px;
-  }
-
-  & .divider-text {
-    white-space: nowrap;
-    color: #888888;
-    font-size: 14px;
-  }
-
-  & .google-login {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 60px;
-    padding: 10px;
-    background: var(--white-color);
-    border-radius: 5px;
+    & .google-login:hover,
+    button:hover {
+      cursor: pointer;
+      scale: 1.03;
+    }
   }
 }

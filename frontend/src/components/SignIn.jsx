@@ -11,11 +11,8 @@ function SignIn() {
         <img src="auth-page-photo.png" alt="dog with owner" />
       </div>
       <div className="form-container">
-        <div className="headers">
-          <p className="main">Sign In</p>
-          {/* <p className="sub">Sign Up</p> */}
-        </div>
         <form action="">
+          <h1 className="main">Sign In</h1>
           <div className="form-input">
             <input type="email" id="email" name="email" placeholder="Email" />
           </div>
