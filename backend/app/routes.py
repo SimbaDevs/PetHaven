@@ -1,8 +1,8 @@
-from app import app, Pet, db
-from flask import jsonify, request
-from schema import PetSchema
+from schema import PetSchema, Pet
+from models import AdoptionFormSubmission, db
 from flask_cors import CORS # type: ignore
-from app import AdoptionFormSubmission
+from app import app
+from flask import jsonify, request # type: ignore
 from flask_mail import Mail, Message # type: ignore
 
 

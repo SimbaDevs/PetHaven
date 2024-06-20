@@ -1,6 +1,5 @@
+from models import Pet, Shelter, Vaccine, AdoptionFormSubmission
 from flask_marshmallow import Marshmallow # type: ignore
-from flask import jsonify
-from app import Pet, Shelter, Vaccine, AdoptionFormSubmission
 
 ma = Marshmallow()
 
