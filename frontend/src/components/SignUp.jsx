@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/SignIn.css";
+import "./styles/SignUp.css";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
@@ -16,7 +16,10 @@ function Signup() {
       <div className="form-container">
         <form action="">
           <h1 className="main">Sign In</h1>
-          <p className="welcome-text">Welcome back to PetHaven</p>
+          <p className="welcome-text">
+            Welcome to Pet Haven, your trusted partner in finding the perfect
+            companion
+          </p>
           <div className="form-input">
             <input type="email" id="email" name="email" placeholder="Email" />
           </div>
