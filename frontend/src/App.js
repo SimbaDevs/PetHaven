@@ -48,7 +48,7 @@ function App() {
 
 function PageLayout() {
     let location = useLocation()
-    let showNavAndFooter = location.pathname !== '/signin';
+    let showNavAndFooter = location.pathname !== '/signin' && location.pathname !== '/signup';
 
     const footerRef = useRef(null);
 
@@ -63,9 +63,9 @@ function PageLayout() {
             <Routes>
                 <Route path='/' element={<HomePage />} />
                 <Route path='/signin' element={<SignIn />} />
+                <Route path="/signup" element={<Signup />} />
                 <Route path="/pet/:id" element={<PetDetails />} />
                 <Route path="/adopt/:id" element={<AdoptionForm />} />
-                <Route path="/signup" element={<Signup />} />
             </Routes>
             {showNavAndFooter && <Footer ref={footerRef} />}
         </div>
