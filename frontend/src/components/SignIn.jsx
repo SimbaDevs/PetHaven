@@ -34,9 +34,9 @@ function SignIn() {
           <button type="submit">Continue</button>
           <div className="sign-up-link">
             <p>Don't have an account? </p>
-            <a onClick={() => navigate("/signup")} className="signup-link">
+            <p onClick={() => navigate("/signup")} className="link">
               Sign Up
-            </a>
+            </p>
           </div>
         </form>
       </div>

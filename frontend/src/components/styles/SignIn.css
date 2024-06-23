@@ -175,11 +175,11 @@ html {
       font-size: 15px;
     }
 
-    & a {
+    & .link {
       color: var(--blue-support-color);
     }
 
-    & a:hover {
+    & .link:hover {
       cursor: pointer;
       text-decoration: underline;
     }
