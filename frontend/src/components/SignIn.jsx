@@ -32,14 +32,11 @@ function SignIn() {
             Forgot password?
           </a>
           <button type="submit">Continue</button>
-          <div className="divider-container">
-            <div className="divider-line"></div>
-            <span className="divider-text">or continue with</span>
-            <div className="divider-line"></div>
-          </div>
-          <div className="google-login">
-            <img src="google-icon.png" alt="google icon" />
-            <span>Sign in with Google</span>
+          <div className="sign-up-link">
+            <p>Don't have an account? </p>
+            <a href={navigate("/signup")} className="signup-link">
+              Sign Up
+            </a>
           </div>
         </form>
       </div>

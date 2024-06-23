@@ -161,4 +161,27 @@ html {
       scale: 1.03;
     }
   }
+
+  & .sign-up-link {
+    margin-top: 60px;
+    width: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+    & p {
+      color: var(--light-grey);
+      font-size: 15px;
+    }
+
+    & a {
+      color: var(--blue-support-color);
+    }
+
+    & a:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
 }
