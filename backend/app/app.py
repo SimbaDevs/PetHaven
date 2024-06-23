@@ -1,9 +1,6 @@
-from flask import Flask
-from datetime import date
+from flask import Flask  # type: ignore
 from config import Config
-import os
 
-basedir = os.path.abspath(os.path.dirname(__file__))
 
 def create_app():
     app = Flask(__name__)
