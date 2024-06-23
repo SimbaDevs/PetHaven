@@ -7,6 +7,7 @@ import PetList from './components/PetList';
 import Footer from './components/Footer';
 import AdoptionForm from './components/AdoptForm';
 import SignIn from './components/SignIn';
+import Signup from './components/SignUp';
 
 function HomePage() {
     const [selectedOption, setSelectedOption] = useState('all');
@@ -64,6 +65,7 @@ function PageLayout() {
                 <Route path='/signin' element={<SignIn />} />
                 <Route path="/pet/:id" element={<PetDetails />} />
                 <Route path="/adopt/:id" element={<AdoptionForm />} />
+                <Route path="/signup" element={<Signup />} />
             </Routes>
             {showNavAndFooter && <Footer ref={footerRef} />}
         </div>

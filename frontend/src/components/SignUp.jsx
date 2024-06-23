@@ -1,8 +1,8 @@
 import React from "react";
-import "./styles/SignIn.css";
+import "./styles/Signin.css";
 import { useNavigate } from "react-router-dom";
 
-function SignIn() {
+function Signup() {
   const navigate = useNavigate();
 
   return (
@@ -47,4 +47,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default Signup;
