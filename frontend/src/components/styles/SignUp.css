@@ -18,7 +18,6 @@
 
 body,
 html {
-  /* height: 100vh; */ /*TODO: don't uncomment this line */
   margin: 0;
   display: flex;
   justify-content: center;
@@ -96,10 +95,6 @@ html {
       }
     }
 
-    & .form-input input[type="password"] {
-      margin-bottom: 20px;
-    }
-
     & .forgot-pwd {
       color: var(--blue-support-color);
     }
@@ -159,30 +154,6 @@ html {
     button:hover {
       cursor: pointer;
       scale: 1.03;
-    }
-  }
-
-  & .sign-up-link {
-    margin-top: 60px;
-    width: 100%;
-    /* border: 1px solid red; */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0;
-    & p {
-      color: var(--light-grey);
-      font-size: 13px;
-      font-weight: 200;
-    }
-
-    & a {
-      color: var(--blue-support-color);
-    }
-
-    & a:hover {
-      cursor: pointer;
-      text-decoration: underline;
     }
   }
 }

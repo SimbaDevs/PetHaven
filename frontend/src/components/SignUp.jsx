@@ -31,9 +31,14 @@ function Signup() {
               placeholder="Password"
             />
           </div>
-          <a href={navigate()} className="forgot-pwd">
-            Forgot password?
-          </a>
+          <div className="form-input">
+            <input
+              type="password"
+              id="password2"
+              name="password2"
+              placeholder="Confirm Password"
+            />
+          </div>
           <button type="submit">Continue</button>
           <div className="divider-container">
             <div className="divider-line"></div>
@@ -42,7 +47,7 @@ function Signup() {
           </div>
           <div className="google-login">
             <img src="google-icon.png" alt="google icon" />
-            <span>Sign in with Google</span>
+            <span>Continue with Google</span>
           </div>
         </form>
       </div>
