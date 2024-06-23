@@ -8,7 +8,10 @@ function SignIn() {
   return (
     <div className="auth-container">
       <div className="form-image">
-        <img src="auth-page-photo.png" alt="dog with owner" />
+        <div className="logo">
+          <img src="logo.png" alt="logo" />
+          <p>Pethaven</p>
+        </div>
       </div>
       <div className="form-container">
         <form action="">

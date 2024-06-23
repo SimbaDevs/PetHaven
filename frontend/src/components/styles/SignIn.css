@@ -8,6 +8,7 @@
   --max-img-height: 80vh;
   --font-style: "inter", sans-serif;
   --placeholder-color: #494949;
+  --div-width: 25vw;
 }
 
 * {
@@ -26,32 +27,49 @@ html {
 
 .auth-container {
   display: flex;
-  max-width: 800px; /* Adjust based on your design */
-  width: 100%;
+  max-width: 800px;
+  height: fit-content;
   background-color: var(--secondary-color);
   padding: 0;
-  margin: 60px;
+  margin: 80px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
 
 .auth-container .form-image {
-  background-image: url();
+  background-image: url("../../../public/auth-page-photo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: var(--div-width);
+  border-radius: 10px 0 0 10px;
+
+  & .logo {
+    position: relative;
+    top: 8px;
+    left: 16px;
+
+    & p {
+      color: var(--dark-color);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: large;
+    }
+  }
 }
 
 .auth-container .form-container {
-  width: 50vw;
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  margin: 20px 10px;
+  width: var(--div-width);
 
   & form {
     width: 80%;
 
     & h1 {
       color: var(--primary-color);
-      align-self: self-start;
+      margin-top: 0;
     }
     & .form-input {
       display: flex;
