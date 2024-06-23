@@ -172,7 +172,8 @@ html {
     margin-bottom: 0;
     & p {
       color: var(--light-grey);
-      font-size: 15px;
+      font-size: 13px;
+      font-weight: 200;
     }
 
     & a {
