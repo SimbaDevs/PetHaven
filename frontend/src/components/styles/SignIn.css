@@ -7,6 +7,7 @@
   --blue-support-color: #1264ed;
   --max-img-height: 80vh;
   --font-style: "inter", sans-serif;
+  --light-grey: #454545;
   --placeholder-color: #494949;
   --div-width: 25vw;
 }
@@ -70,6 +71,11 @@ html {
     & h1 {
       color: var(--primary-color);
       margin-top: 0;
+      margin-bottom: -10px;
+    }
+
+    & p .welcome-text {
+      color: var(--light-grey);
     }
     & .form-input {
       display: flex;
