@@ -1,19 +1,14 @@
 from .schema import PetSchema
 from .models import AdoptionFormSubmission, db, Pet
 from flask_cors import CORS  # type: ignore
-from . import create_app
 from flask import jsonify, request, Blueprint  # type: ignore
 
 
-app = create_app()
-# Enable CORS
-CORS(app)
-
 # register as bp
-bp = Blueprint('bp', __name__, url_prefix='api/v1')
+bp = Blueprint('bp', __name__, url_prefix='/api/v1')
 
 # get all pets
-@app.route("/pets", methods=["GET"])
+@bp.route("/pets", methods=["GET"])
 def get_pets():
     pets = Pet.query.all()
     pet_schema = PetSchema(many=True)
@@ -22,7 +17,7 @@ def get_pets():
 
 
 # get pet by id
-@app.route("pets/<int:id>", methods=["GET"])
+@bp.route("pets/<int:id>", methods=["GET"])
 def get_pet(id):
     pet = Pet.query.get(id)
     pet_schema = PetSchema()
@@ -30,7 +25,7 @@ def get_pet(id):
     return jsonify(result)
 
 
-@app.route("adopt", methods=["POST"])
+@bp.route("adopt", methods=["POST"])
 def adopt():
     data = request.get_json()
     pet = Pet.query.get(data["pet_id"])
