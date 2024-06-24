@@ -25,7 +25,7 @@ class Pet(db.Model):
     arrival_date = db.Column(db.Date, nullable=False, default=date.today)
     adoption_fee = db.Column(db.Float, nullable=False)
     shelter_id = db.Column(db.Integer, db.ForeignKey('Shelters.id'), nullable=False)
-    image_url = db.Column(db.String(255), nullable=True)
+    image_str = db.Column(db.Text, nullable=True)
     vaccines = db.relationship('Vaccine', backref='pet', lazy=True)
 
 class Vaccine(db.Model):
