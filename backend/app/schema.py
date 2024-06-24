@@ -1,4 +1,4 @@
-from models import Pet, Shelter, Vaccine, AdoptionFormSubmission
+from .models import Pet, Shelter, Vaccine, AdoptionFormSubmission
 from flask_marshmallow import Marshmallow # type: ignore
 
 ma = Marshmallow()

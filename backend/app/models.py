@@ -1,8 +1,5 @@
-from app import app
+from . import db
 from datetime import date
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy(app)
 
 
 class Shelter(db.Model):
