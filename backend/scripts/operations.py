@@ -1,4 +1,4 @@
-from app import db, app, Pet
+from main import db, app, Pet
 
 
 with app.app_context():
