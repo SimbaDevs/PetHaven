@@ -2,7 +2,7 @@ from .schema import PetSchema
 from .models import AdoptionFormSubmission, db, Pet
 from flask_cors import CORS  # type: ignore
 from flask import jsonify, request, Blueprint  # type: ignore
-from mail.mail import send_email
+from backend.mail.email import send_email
 
 
 # register as bp
