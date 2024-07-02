@@ -1,7 +1,7 @@
 from faker import Faker # type: ignore
 from random import randint, choice
 from datetime import date, timedelta
-from app import db, Vaccine, Pet, Shelter, app
+from app import db, Pet, app
 
 app.app_context().push()
 
@@ -13,9 +13,6 @@ dogs = ['morris.jpg', 'Peaches.jpg', 'Martin.jpg', 'Bolt.jpg',
         'Lewis.jpg', 'Monty-the-pup.jpg']
 
 
-print(dogs)
-
-# list of dog breeds
 dog_breeds = [
 "Labrador Retriever", "German Shepherd", "Golden Retriever","Bulldog",
 "Beagle", "Poodle", "Rottweiler", "Boxer", "Yorkshire Terrier",
@@ -26,18 +23,18 @@ dog_breeds = [
 
 def add_random_dogs():
     for dog_image in dogs:
-        name = dog_image.split('.')[0]  # Extract name from image file name
-        breed = choice(dog_breeds)  # Randomly select a breed
+        name = dog_image.split('.')[0]
+        breed = choice(dog_breeds)
         pet = Pet(
             pet_type="Dogs",
             name=name,
             breed=breed,
-            weight=round(randint(3, 8) + faker.random.random(), 1),  # Weight between 3 and 8 kg
-            age=randint(1, 15),  # Age between 1 and 15 years
+            weight=round(randint(3, 8) + faker.random.random(), 1),
+            age=randint(1, 15),
             location=faker.city(),
-            arrival_date=date.today() - timedelta(days=randint(0, 365)),  # Random arrival date within the last year
-            adoption_fee=round(randint(20, 100) + faker.random.random(), 2),  # Adoption fee between $20 and $100
-            shelter_id=1,  # Assuming all pets are in shelter with id=1
+            arrival_date=date.today() - timedelta(days=randint(0, 365)),
+            adoption_fee=round(randint(20, 100) + faker.random.random(), 2),
+            shelter_id=1,
             image_url=f"http://localhost:5000/static/images/{dog_image}"
         )
         db.session.add(pet)
