@@ -29,9 +29,9 @@ def decode_b64_to_image(encoded_str: str, output_path: str):
 
 
 # test the image encoding and decoding
-encode_img_str = encode_to_base64('Abby.jpg')
+# encode_img_str = encode_to_base64('Abby.jpg')
 
-print(encode_img_str)
+# print(encode_img_str)
 
-print("\nDecoding the base64 str to image...")
-decode_b64_to_image(encode_img_str, output_path='decoded.jpg')
+# print("\nDecoding the base64 str to image...")
+# decode_b64_to_image(encode_img_str, output_path='decoded.jpg')
