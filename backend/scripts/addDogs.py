@@ -1,7 +1,11 @@
+import os
+
 from faker import Faker # type: ignore
 from random import randint, choice
 from datetime import date, timedelta
-from app import db, Pet, app
+from app import db, app
+from app.models import Pet
+from .image_encryption import encode_to_base64
 
 app.app_context().push()
 
@@ -22,9 +26,12 @@ dog_breeds = [
 ]
 
 def add_random_dogs():
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    images_dir = os.path.join(script_dir, '..', 'static', 'images')
     for dog_image in dogs:
         name = dog_image.split('.')[0]
         breed = choice(dog_breeds)
+        image_path = os.path.join(images_dir, dog_image)
         pet = Pet(
             pet_type="Dogs",
             name=name,
@@ -35,7 +42,7 @@ def add_random_dogs():
             arrival_date=date.today() - timedelta(days=randint(0, 365)),
             adoption_fee=round(randint(20, 100) + faker.random.random(), 2),
             shelter_id=1,
-            image_url=f"http://localhost:5000/static/images/{dog_image}"
+            image_str=encode_to_base64(image_path=image_path)
         )
         db.session.add(pet)
         db.session.commit()
