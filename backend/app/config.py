@@ -1,19 +1,27 @@
 import os
 
 base_dir = os.path.abspath(os.path.dirname(__file__))
-
+instance_dir = os.path.join(base_dir, '..', 'instance')
 
 class Config:
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(
-        base_dir, 'pets-data.sqlite')
-    SQLALCHEMY_COMMIT_ON_TEARDOWN = True
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-    MAIL_SERVER = 'smtp.googlemail.com'
-    MAIL_PORT = 587
-    MAIL_USE_TLS = True
-    MAIL_USE_SSL = False
-    MAIL_USERNAME = ""
-    MAIL_USERNAME = 'muchemi.developer@gmail.com'  # Replace with your email
-    MAIL_PASSWORD = "tmns jpmt dzii qces" # Replace with your email password
-    MAIL_DEFAULT_SENDER = 'muchemi.developer@gmail.com'  # Replace with your email
+    SECRET_KEY = "thisisasecretkey"
 
+class Development(Config):
+    DEBUG = True
+    SQLALCHEMY_DATABASE_URI = "sqlite:///dev.db"
+
+class Testing(Config):
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(
+        instance_dir, 'pets-data.sqlite')    
+
+class Production(Config):
+    DEBUG = False
+    SQLALCHEMY_DATABASE_URI = "postgresql://user:password@localhost/dbname"
+    
+configs = {
+    "development": Development,
+    "production": Production,
+    "default": Testing,
+    "test": Testing
+}
