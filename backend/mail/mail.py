@@ -1,32 +1,31 @@
-from app import app
-from flask_mail import Mail, Message # type: ignore
+import smtplib, ssl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
+def send_email(email_address, pet_name):
+    port = 465  # using SMTP_SSL()
+    password = "sqmzguzsqzpxibuy"  # Replace with your app-specific password
 
-mail = Mail(app)
-
-def send_confirmation_email(recipient, pet):
-    msg = Message('Adoption Confirmation', recipients=[recipient])
-    msg.body = f"""
-    Dear {recipient},
-
-    Thank you for your interest in adopting {pet.name}. Here are the details of the pet:
-
-    Name: {pet.name}
-    Breed: {pet.breed}
-    Age: {pet.age}
-    Location: {pet.location}
-    Adoption Fee: {pet.adoption_fee}
-
-    We will contact you shortly with more details.
-
-    Best regards,
-    Pet Haven
+    sender_gmail = "muchemi7857@gmail.com"
+    subject = "Pet Adoption Confirmation"
+    body = f"""
+    Thank you for chosing to adopt {pet_name}.
     """
-    mail.send(msg)
 
-    # Attach the pet's image if available
-    if pet.image_url:
-        # assuming pet.image_url is something like 'static/images/pet_name.jpg'
-        with app.open_resource(pet.image_url) as fp:
-            msg.attach(f"/static/images/{pet.name}.jpg", "image/jpeg", fp.read())
+    msg = MIMEMultipart()
+    msg["From"] = sender_gmail
+    msg["To"] = email_address
+    msg["Subject"] = subject
+    msg.attach(MIMEText(body, "plain"))
 
+    context = ssl.create_default_context()
+
+    try:
+        with smtplib.SMTP_SSL("smtp.gmail.com", port=port, context=context) as server:
+            server.login(sender_gmail, password)
+            server.sendmail(sender_gmail, email_address, msg.as_string())
+            print("Email sent successfully")
+    except smtplib.SMTPException as e:
+        print(f"SMTP error occurred: {e}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
