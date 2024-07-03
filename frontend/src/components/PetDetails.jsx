@@ -21,16 +21,8 @@ const PetDetails = () => {
     return <div>Loading...</div>;
   } else {
     document.title = `${pet.name} - Pet Details`;
-
-    // decode encoded image and render
-    if (pet.image_str) {
-      const blob = base64ToBlob(pet.image_str);
-      const url = URL.createObjectURL(blob);
-      setImageSrc(url);
-
-      return () => URL.revokeObjectURL(url);
-    }
   }
+
 
   return (
     <div className="pet-details">
@@ -39,7 +31,7 @@ const PetDetails = () => {
       </button>
       <div className="pet-specifics">
         <div className="pet-img">
-          <img src={imageSrc} alt={pet.name} />
+          <img src={`data:image/jpeg;base64,${pet.image_str}`} alt={pet.name} />
         </div>
         <div className="details">
           <div className="name-and-availability">
