@@ -1,4 +1,4 @@
-export default function base64ToBlob(base64_encoded_str, mimeType) {
+export default function base64ToBlob(base64_encoded_str) {
     const byteCharacters = atob(base64_encoded_str);
     const byteNumbers = new Array(byteCharacters.length);
 
@@ -8,5 +8,5 @@ export default function base64ToBlob(base64_encoded_str, mimeType) {
 
     const byteArray = new Uint8Array(byteNumbers);
 
-    return new Blob([byteArray], { type: mimeType });
+    return new Blob([byteArray], { type: "image/jpeg"});
 }

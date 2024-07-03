@@ -9,7 +9,7 @@ const PetCard = ({ pet }) => {
 
   useEffect(() => {
     if (pet.image_str) {
-      const blob = base64ToBlob(pet.image_str, "image/jpeg");
+      const blob = base64ToBlob(pet.image_str);
       const url = URL.createObjectURL(blob);
 
       setImageSrc(url);

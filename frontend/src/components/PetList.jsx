@@ -34,7 +34,10 @@ const PetList = ({ selectedOption, searchQuery }) => {
       {filteredPets.map((pet) => (
         <Link
           style={{ textDecoration: "none" }}
-          to={`/pet/${pet.id}`}
+          to={{
+            pathname: `/pet/${pet.id}`,
+            state: {pet: pet}
+          }}
           key={pet.id}
           className="linked-card"
         >
