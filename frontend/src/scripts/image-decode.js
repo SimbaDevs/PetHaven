@@ -8,5 +8,5 @@ export default function base64ToBlob(base64_encoded_str) {
 
     const byteArray = new Uint8Array(byteNumbers);
 
-    return new Blob([byteArray], { type: "image/jpeg"});
+    return new Blob([byteArray], { type: "image/jpeg" });
 }
