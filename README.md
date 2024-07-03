@@ -33,8 +33,13 @@ To set up a virtual environment for the backend, follow these steps:
 
 ## Usage
 
-1. Start the application: `npm start`
-2. Open your web browser and go to `http://localhost:3000`
+1. Start the backend server:
+   - Navigate to the backend folder: `cd backend`
+   - Start the server: `flask run`
+2. Start the frontend server:
+   - Navigate to the frontend folder: `cd frontend`
+   - Start the server: `npm start`
+3. Open your web browser and go to `http://localhost:3000`
 
 ## Contributing
 
