@@ -1,12 +1,15 @@
-import smtplib, ssl
+import smtplib, ssl, os
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def send_email(email_address, pet_name):
     port = 465  # using SMTP_SSL()
-    password = "sqmzguzsqzpxibuy"  # Replace with your app-specific password
+    password = os.getenv("GMAIL_PWD")
 
-    sender_gmail = "muchemi7857@gmail.com"
+    sender_gmail = os.getenv("GMAIL_USERNAME")
     subject = "Pet Adoption Confirmation"
     body = f"""
     Thank you for chosing to adopt {pet_name}.

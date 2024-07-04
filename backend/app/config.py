@@ -1,10 +1,13 @@
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 base_dir = os.path.abspath(os.path.dirname(__file__))
 instance_dir = os.path.join(base_dir, '..', 'instance')
 
 class Config:
-    SECRET_KEY = "thisisasecretkey"
+    SECRET_KEY = os.getenv("SECRET_KEY")
 
 class Development(Config):
     DEBUG = True
