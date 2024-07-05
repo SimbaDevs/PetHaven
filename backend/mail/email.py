@@ -53,7 +53,7 @@ Thank you for choosing PetHaven and for your interest in adopting {pet.name}. We
 
 Attached to this email, you will find a photo of {pet.name} along with the details you might find helpful. We hope you are as excited as we are about the newest addition to your family.
 
-Here are some details about [Pet's Name]:
+Here are some details about {pet.name}:
 - Breed: {pet.breed}
 - Age: {pet.age}
 - Size: {pet.weight} Kgs
@@ -86,7 +86,7 @@ The PetHaven Team
     # add headers to the attachment part
     part.add_header(
     "Content-Disposition",
-    f"attachement; filename= {pet_file_path}",
+    f"attachement; filename= {pet.name}.jpg",
 )
     
     msg.attach(part)
