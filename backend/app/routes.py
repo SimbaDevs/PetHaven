@@ -2,7 +2,7 @@ from .schema import PetSchema
 from .models import AdoptionFormSubmission, db, Pet
 from flask_cors import CORS  # type: ignore
 from flask import jsonify, request, Blueprint  # type: ignore
-from backend.mail.email import send_email
+from backend.mail.email import send_email, send_confirmation_email
 
 
 # register as bp
@@ -43,7 +43,11 @@ def adopt():
     )
     db.session.add(new_adoption)
     db.session.commit()
+    
+    email_address = data['email']
+    user_firstname = data['first_name']
 
-    send_email(data['email'], pet_name=pet.name)
+    send_email(email_address, pet_name=pet.name)
+    send_confirmation_email(email=email_address, user=user_firstname, pet=pet)
 
     return jsonify({"message": "Adoption form submitted successfully!"}), 201
