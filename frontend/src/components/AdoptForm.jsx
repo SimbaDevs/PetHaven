@@ -1,14 +1,15 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { imageStrToJpg } from "../scripts/image-decode";
+
 import "./styles/AdoptionForm.css";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
 
 
 const AdoptionForm = () => {
   const { id } = useParams();
   const [pet, setPet] = useState(null);
+  const [imageSrc, setImageSrc] = useState("");
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -34,6 +35,7 @@ const AdoptionForm = () => {
     return <div>Loading...</div>;
   } else {
     document.title = `Adopt ${pet.name}`;
+    imageStrToJpg(pet.image_str, setImageSrc);
   }
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -126,7 +128,7 @@ const AdoptionForm = () => {
             </form>
           </div>
           <div className="image-section">
-            <img src={pet.image_url} alt={pet.name} />
+            <img src={imageSrc} alt={pet.name} />
           </div>
         </div>
       </div>

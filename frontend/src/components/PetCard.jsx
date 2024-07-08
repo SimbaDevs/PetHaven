@@ -1,7 +1,7 @@
 // src/components/PetCard.js
 import "./styles/PetCard.css";
 import React, {useEffect, useState} from "react";
-import base64ToBlob from "../scripts/image-decode";
+import { imageStrToJpg } from "../scripts/image-decode";
 
 const PetCard = ({ pet }) => {
 
@@ -9,13 +9,7 @@ const PetCard = ({ pet }) => {
 
   useEffect(() => {
     if (pet.image_str) {
-      const blob = base64ToBlob(pet.image_str);
-      const url = URL.createObjectURL(blob);
-
-      setImageSrc(url);
-
-      // clean up url object when the component unmounts
-      return () => URL.revokeObjectURL(url);
+      imageStrToJpg(pet.image_str, setImageSrc);
     }
   }, [pet.image_str]);
 
