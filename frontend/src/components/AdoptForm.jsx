@@ -5,7 +5,6 @@ import { imageStrToJpg } from "../scripts/image-decode";
 
 import "./styles/AdoptionForm.css";
 
-
 const AdoptionForm = () => {
   const { id } = useParams();
   const [pet, setPet] = useState(null);
@@ -27,19 +26,23 @@ const AdoptionForm = () => {
   useEffect(() => {
     fetch(`/api/v1/pets/${id}`)
       .then((response) => response.json())
-      .then((data) => setPet(data))
+      .then((data) => {
+        console.log("Data fetch successfully");
+        setPet(data);
+        console.log(pet);
+      })
       .catch((error) => console.error("Error fetching pet details:", error));
-  }, [id]);
+  }, [id, pet]);
 
-  if (!pet) {
-    return <div>Loading...</div>;
-  } else {
-    document.title = `Adopt ${pet.name}`;
-    imageStrToJpg(pet.image_str, setImageSrc);
-  }
+  // useEffect(() => {
+  //   if (pet) {
+  //     document.title = `Adopt ${pet.name}`;
+  //     imageStrToJpg(pet.image_str, setImageSrc);
+  //   }
+  // }, [pet]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    // create a POST request to submit data to backend via API
     fetch("/api/v1/adopt", {
       method: "POST",
       headers: {
@@ -128,7 +131,7 @@ const AdoptionForm = () => {
             </form>
           </div>
           <div className="image-section">
-            <img src={imageSrc} alt={pet.name} />
+          <img src={`data:image/jpeg;base64,${pet.image_str}`} alt={pet.name} />
           </div>
         </div>
       </div>
