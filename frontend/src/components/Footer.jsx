@@ -1,6 +1,10 @@
 import React from "react";
 import "./styles/Footer.css";
 
+import facebookImg from "../assets/facebook.png";
+import gmailImg from "../assets/gmail.png";
+import phoneImg from "../assets/phone.png";
+
 const Footer = React.forwardRef((props, ref) => {
   return (
     <footer ref={ref} className="footer">
@@ -8,9 +12,9 @@ const Footer = React.forwardRef((props, ref) => {
         <div className="socials">
           <h3>Pet Haven</h3>
           <div className="images">
-            <img src="facebook.png" alt="facebook" />
-            <img src="gmail.png" alt="twitter" />
-            <img src="phone.png" alt="instagram" />
+            <img src={facebookImg} alt="facebook" />
+            <img src={gmailImg} alt="gmail" />
+            <img src={phoneImg} alt="phone" />
           </div>
         </div>
         <div className="about">
