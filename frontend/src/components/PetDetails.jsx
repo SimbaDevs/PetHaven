@@ -1,26 +1,20 @@
+import useSWR from "swr";
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./styles/PetDetails.css";
+import { fetchData } from "../scripts/data";
 
 const PetDetails = () => {
   const { id } = useParams();
-  const [pet, setPet] = useState(null);
+  const url = `/api/v1/pets/${id}`;
+  const { data, error, isLoading } = useSWR(url, fetchData);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch(`/api/v1/pets/${id}`)
-      .then((response) => response.json())
-      .then((data) => setPet(data))
-      .catch((error) => console.error("Error fetching pet details:", error));
-  }, [id]);
+  if (error) return <div>failed to load</div>;
+  if (isLoading) return <div>loading...</div>;
 
-  if (!pet) {
-    return <div>Loading...</div>;
-  } else {
-    document.title = `${pet.name} - Pet Details`;
-  }
-
+  document.title = `${data.name} - Pet Details`;
 
   return (
     <div className="pet-details">
@@ -29,11 +23,14 @@ const PetDetails = () => {
       </button>
       <div className="pet-specifics">
         <div className="pet-img">
-          <img src={`data:image/jpeg;base64,${pet.image_str}`} alt={pet.name} />
+          <img
+            src={`data:image/jpeg;base64,${data.image_str}`}
+            alt={data.name}
+          />
         </div>
         <div className="details">
           <div className="name-and-availability">
-            <p className="pet-name">{pet.name}</p>
+            <p className="pet-name">{data.name}</p>
             <p className="availability">Available to adopt</p>
           </div>
           <h3 className="about-text">ABOUT</h3>
@@ -65,21 +62,21 @@ const PetDetails = () => {
               </p>
             </div>
             <div className="variables">
-              <p className="var">{pet.breed}</p>
+              <p className="var">{data.breed}</p>
               <p className="var">No yet defined</p>
-              <p className="var">{pet.color}</p>
-              <p className="var">{pet.age} years old</p>
+              <p className="var">{data.color}</p>
+              <p className="var">{data.age} years old</p>
               <p className="var">Not defined</p>
-              <p className="var">{pet.arrival_date}</p>
-              <p className="var">{pet.weight} kgs</p>
-              <p className="var">{pet.location}</p>
-              <p className="var">Kshs {pet.adoption_fee}</p>
+              <p className="var">{data.arrival_date}</p>
+              <p className="var">{data.weight} kgs</p>
+              <p className="var">{data.location}</p>
+              <p className="var">Kshs {data.adoption_fee}</p>
             </div>
           </div>
 
           <button
             className="adopt-btn"
-            onClick={() => navigate(`/adopt/${pet.id}`)}
+            onClick={() => navigate(`/adopt/${data.id}`)}
           >
             Apply to Adopt
           </button>
@@ -88,16 +85,16 @@ const PetDetails = () => {
       <div className="description">
         <h2>Description</h2>
         <p>
-          {pet.name} is a {pet.age} year old {pet.breed} who is looking for a
-          loving home. {pet.name} is a very friendly and playful pet who loves
-          to be around people. {pet.name} is looking for a family who can give
+          {data.name} is a {data.age} year old {data.breed} who is looking for a
+          loving home. {data.name} is a very friendly and playful pet who loves
+          to be around people. {data.name} is looking for a family who can give
           him the love and attention he deserves. If you are interested in
-          adopting {pet.name}, please fill out an adoption application.
+          adopting {data.name}, please fill out an adoption application.
         </p>
       </div>
       <div className="medical-history">
         <h2>Medical History</h2>
-        {pet.vaccines.map((vaccine) => (
+        {data.vaccines.map((vaccine) => (
           <p key={vaccine.id}>
             {vaccine.date_administered} - {vaccine.name}
           </p>

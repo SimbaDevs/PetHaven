@@ -4,22 +4,19 @@ import { Link } from "react-router-dom";
 import PetCard from "./PetCard";
 import axios from "axios";
 import "./styles/PetList.css";
-
+import useSWR from "swr";
+import { fetchData } from "../scripts/data";
 
 const PetList = ({ selectedOption, searchQuery }) => {
   const [pets, setPets] = React.useState([]);
+  const url = "/api/v1/pets";
 
-  useEffect(() => {
-    axios
-      .get("/api/v1/pets")
-      .then((res) => {
-        setPets(res.data);
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+  const { data, error, isLoading } = useSWR(url, fetchData);
+
+  if (error) return <div>failed to load</div>;
+  if (isLoading) return <div>loading...</div>;
+
+  setPets(data);
 
   const filteredPets = pets.filter((pet) => {
     const matchesType =
@@ -36,7 +33,7 @@ const PetList = ({ selectedOption, searchQuery }) => {
           style={{ textDecoration: "none" }}
           to={{
             pathname: `/pet/${pet.id}`,
-            state: {pet: pet}
+            state: { pet: pet },
           }}
           key={pet.id}
           className="linked-card"

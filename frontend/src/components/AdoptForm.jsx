@@ -1,14 +1,16 @@
 import React from "react";
+import useSWR from "swr";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { imageStrToJpg } from "../scripts/image-decode";
+import { useState } from "react";
 
 import "./styles/AdoptionForm.css";
+import { fetchData } from "../scripts/data";
 
 const AdoptionForm = () => {
   const { id } = useParams();
-  const [pet, setPet] = useState(null);
-  const [imageSrc, setImageSrc] = useState("");
+  const url = `/api/v1/pets/${id}`;
+  const { data, error, isLoading } = useSWR(url, fetchData);
+
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -18,28 +20,13 @@ const AdoptionForm = () => {
     pet_id: id,
   });
 
+  if (error) return <div>failed to load</div>;
+  if (isLoading) return <div>loading...</div>;
+  
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
-
-  useEffect(() => {
-    fetch(`/api/v1/pets/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Data fetch successfully");
-        setPet(data);
-        console.log(pet);
-      })
-      .catch((error) => console.error("Error fetching pet details:", error));
-  }, [id, pet]);
-
-  // useEffect(() => {
-  //   if (pet) {
-  //     document.title = `Adopt ${pet.name}`;
-  //     imageStrToJpg(pet.image_str, setImageSrc);
-  //   }
-  // }, [pet]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -72,7 +59,7 @@ const AdoptionForm = () => {
       <div className="adoption-form-page">
         <div className="adoption-form-container">
           <div className="form-section">
-            <h2>Adopt {pet && pet.name}</h2>
+            <h2>Adopt {data.name}</h2>
             <p>Fill out this form to start the adoption process</p>
             <form onSubmit={handleSubmit}>
               <div className="name-groups">
@@ -131,7 +118,10 @@ const AdoptionForm = () => {
             </form>
           </div>
           <div className="image-section">
-          <img src={`data:image/jpeg;base64,${pet && pet.image_str}`} alt={pet && pet.name} />
+            <img
+              src={`data:image/jpeg;base64,${data.image_str}`}
+              alt={data.name}
+            />
           </div>
         </div>
       </div>
