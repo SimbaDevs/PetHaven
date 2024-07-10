@@ -1,5 +1,4 @@
 import useSWR from "swr";
-import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./styles/PetDetails.css";
 import { fetchData } from "../scripts/data";

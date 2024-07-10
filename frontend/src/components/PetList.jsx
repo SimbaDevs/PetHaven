@@ -1,8 +1,7 @@
 // src/components/PetList.js
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import PetCard from "./PetCard";
-import axios from "axios";
 import "./styles/PetList.css";
 import useSWR from "swr";
 import { fetchData } from "../scripts/data";
