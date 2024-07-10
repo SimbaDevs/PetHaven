@@ -72,7 +72,7 @@ const AdoptionForm = () => {
       <div className="adoption-form-page">
         <div className="adoption-form-container">
           <div className="form-section">
-            <h2>Adopt {pet.name}</h2>
+            <h2>Adopt {pet && pet.name}</h2>
             <p>Fill out this form to start the adoption process</p>
             <form onSubmit={handleSubmit}>
               <div className="name-groups">
@@ -131,7 +131,7 @@ const AdoptionForm = () => {
             </form>
           </div>
           <div className="image-section">
-          <img src={`data:image/jpeg;base64,${pet.image_str}`} alt={pet.name} />
+          <img src={`data:image/jpeg;base64,${pet && pet.image_str}`} alt={pet && pet.name} />
           </div>
         </div>
       </div>
