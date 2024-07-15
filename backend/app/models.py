@@ -16,9 +16,9 @@ class Pet(db.Model):
     __tablename__ = 'Pets'
     
     id = db.Column(db.Integer, primary_key=True)
-    pet_type = db.Column(db.String(50), nullable=False)
     name = db.Column(db.String(50), nullable=False)
     breed = db.Column(db.String(50), nullable=False)
+    pet_type = db.Column(db.String(50), nullable=False)
     weight = db.Column(db.Float, nullable=False)
     age = db.Column(db.Integer, nullable=False)
     location = db.Column(db.String(100), nullable=False)

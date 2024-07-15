@@ -3,6 +3,7 @@ from .models import AdoptionFormSubmission, db, Pet
 from flask_cors import CORS  # type: ignore
 from flask import jsonify, request, Blueprint  # type: ignore
 from backend.mail.email import send_email, send_confirmation_email
+import base64
 
 
 # register as bp
@@ -16,6 +17,45 @@ def get_pets():
     result = pet_schema.dump(pets)
     return jsonify(result)
 
+# send pagination object of 12 pet objects
+@bp.route("/pets/pagination")
+def get_paginated_pets():
+    page = request.args.get('page', 1, type=int)
+    per_page = 10
+    pagination = Pet.query.paginate(
+        page=page,
+        per_page=per_page,
+        error_out=False
+    )
+    items = pagination.items
+    
+    response = {
+        'items': [{
+            'id': item.id,
+            'name': item.name,
+            'breed': item.breed,
+            'type': item.pet_type,
+            'weight': item.weight,
+            'age': item.age,
+            'location': item.location,
+            'adoption_fee':item.adoption_fee,
+            'arrival_date': item.arrival_date,
+            'image_str': base64.b64encode(item.image_str).decode('utf-8') \
+                if item.image_str else None,
+        }for item in items],
+        'pagination': {
+            'page': pagination.page,
+            'per_page': pagination.per_page,
+            'total_items': pagination.total,
+            'total_pages': pagination.pages,
+            'has_next': pagination.has_next,
+            'has_prev': pagination.has_prev,
+            'next_page': pagination.next_num,
+            'prev_page': pagination.prev_num
+        }
+    }
+    
+    return jsonify(response)
 
 # get pet by id
 @bp.route("pets/<int:id>", methods=["GET"])
@@ -24,6 +64,7 @@ def get_pet(id):
     pet_schema = PetSchema()
     result = pet_schema.dump(pet)
     return jsonify(result)
+
 
 
 @bp.route("adopt", methods=["POST"])

@@ -11,10 +11,10 @@ const PetList = ({ selectedOption, searchQuery }) => {
 
   useEffect(() => {
     axios
-      .get("/api/v1/pets")
+      .get("/api/v1/pets/pagination")
       .then((res) => {
-        setPets(res.data);
-        console.log(res.data);
+        setPets(res.data.items);
+        console.log(res.data.items);
       })
       .catch((err) => {
         console.error(err);

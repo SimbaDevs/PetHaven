@@ -6,7 +6,6 @@ import base64ToBlob from "../scripts/image-decode";
 const PetDetails = () => {
   const { id } = useParams();
   const [pet, setPet] = useState(null);
-  const [imageSrc, setImageSrc] = useState("");
 
   const navigate = useNavigate();
 
