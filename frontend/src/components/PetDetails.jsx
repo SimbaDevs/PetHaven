@@ -1,27 +1,31 @@
 import React, { useEffect, useState } from "react";
+import useSWR from "swr";
 import { useParams, useNavigate } from "react-router-dom";
 import "./styles/PetDetails.css";
-import base64ToBlob from "../scripts/image-decode";
+import { fetcher } from "../scripts/data-fetching";
 
 const PetDetails = () => {
   const { id } = useParams();
   const [pet, setPet] = useState(null);
 
   const navigate = useNavigate();
+  const { data, error, isLoading } = useSWR(`/api/v1/pets/${id}`, fetcher);
 
   useEffect(() => {
-    fetch(`/api/v1/pets/${id}`)
-      .then((response) => response.json())
-      .then((data) => setPet(data))
-      .catch((error) => console.error("Error fetching pet details:", error));
-  }, [id]);
+    console.log(data);
+    if (data) {
+      setPet(data);
+    }
+  }, [data]);
+
+  if (error) return <div>failed to load</div>;
+  if (isLoading) return <div>loading...</div>;
 
   if (!pet) {
     return <div>Loading...</div>;
   } else {
     document.title = `${pet.name} - Pet Details`;
   }
-
 
   return (
     <div className="pet-details">

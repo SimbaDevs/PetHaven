@@ -1,25 +1,22 @@
 // src/components/PetList.js
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import PetCard from "./PetCard";
-import axios from "axios";
 import "./styles/PetList.css";
 
+import useSWR from "swr";
+import PetCard from "./PetCard";
+import React from "react";
+import { Link } from "react-router-dom";
+import { fetcher } from "../scripts/data-fetching";
 
 const PetList = ({ selectedOption, searchQuery }) => {
   const [pets, setPets] = React.useState([]);
 
-  useEffect(() => {
-    axios
-      .get("/api/v1/pets/pagination")
-      .then((res) => {
-        setPets(res.data.items);
-        console.log(res.data.items);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+  const { data, error, isLoading } = useSWR("/api/v1/pets", fetcher);
+
+  React.useEffect(() => {
+    if (data) {
+      setPets(data);
+    }
+  }, [data]);
 
   const filteredPets = pets.filter((pet) => {
     const matchesType =
@@ -29,6 +26,9 @@ const PetList = ({ selectedOption, searchQuery }) => {
     return matchesType && matchesSearch;
   });
 
+  if (error) return <div>failed to load</div>;
+  if (isLoading) return <div>loading...</div>;
+
   return (
     <div className="pet-list">
       {filteredPets.map((pet) => (
@@ -36,7 +36,7 @@ const PetList = ({ selectedOption, searchQuery }) => {
           style={{ textDecoration: "none" }}
           to={{
             pathname: `/pet/${pet.id}`,
-            state: {pet: pet}
+            state: { pet: pet },
           }}
           key={pet.id}
           className="linked-card"

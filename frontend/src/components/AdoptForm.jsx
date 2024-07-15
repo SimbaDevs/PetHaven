@@ -1,10 +1,11 @@
 import React from "react";
+import useSWR from "swr";
+import { fetcher } from "../scripts/data-fetching";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { imageStrToJpg } from "../scripts/image-decode";
 
 import "./styles/AdoptionForm.css";
-
 
 const AdoptionForm = () => {
   const { id } = useParams();
@@ -19,17 +20,21 @@ const AdoptionForm = () => {
     pet_id: id,
   });
 
+  const { data, error, isLoading } = useSWR(`/api/v1/pets/${id}`, fetcher);
+
+  useEffect(() => {
+    if (data) {
+      setPet(data);
+    }
+  }, [data]);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  useEffect(() => {
-    fetch(`/api/v1/pets/${id}`)
-      .then((response) => response.json())
-      .then((data) => setPet(data))
-      .catch((error) => console.error("Error fetching pet details:", error));
-  }, [id]);
+  if (error) return <div>failed to load</div>;
+  if (isLoading) return <div>loading...</div>;
 
   if (!pet) {
     return <div>Loading...</div>;
